@@ -1,0 +1,93 @@
+  <!DOCTYPE html>
+<html>
+    <head>
+        <title>STUDENT PORTAL</title>
+    </head>
+    <body>
+        <center>
+        <table border="5px" >
+            <tr style="background-color: rgb(56, 165, 42);">
+                <td>STUDENT REGISTRATION FORM</td>
+            </tr>
+            <tr style="display:block;">
+                <td>NAME:</td><td><input id="me" style="width:auto;"></td>
+            </tr>
+            <tr style="display: block;">
+                <td>AGE;</td><td><input type="number" id="ge" style="width: 180px;"></td>
+            </tr>
+            <tr style="display:block;">
+                <td>
+                    gender:<input type="radio" name="gen" value="male" style="margin-left: 20px;" id="de">male <input type="radio" name="gen" value="female"  style="width: 50px;" id="err">female
+                </td>
+            </tr>
+            <tr style="display: block;">
+                <td>course:</td>
+                <td>
+                    <select id="ect" onchange="saved">
+                        <option value="python">python</option>
+                        <option value="c++">c++</option>
+                        <option value="java">java</option>
+                        <option value="html">html</option>
+                    </select>
+                </td>
+            </tr>
+            <tr style="display:inline;">
+                <td>email:</td>
+                <td>
+                  <input id="il" type="email" style="width: 176px;x;">
+                </td>
+            </tr>
+            <tr>
+                <td><button style="background-color: aqua;padding-left: 30px;width: 240px;" onclick="saved()">save</button></td>
+            </tr>
+        </table>
+        <table border="1px" id="colum">
+            <tr id="taro" style="background-color: black;color: aliceblue;">
+                <td>NAME</td>
+                <td>AGE</td>
+                <td>GENDER</td>
+                <td>COURSE</td>
+                <td>EMAIL</td>
+                <td>ACTION</td>
+            </tr>
+        </table>   
+        </center>
+        <script>
+            var nm=document.getElementById("me")
+            var ae=document.getElementById("ge")
+            var run=document.getElementsByName('gen')
+            var st=document.getElementById("ect")
+            var el=document.getElementById("il")
+            var table=document.getElementById("colum")
+            var taco=document.getElementById("taro")
+            function saved()
+            {
+                var one=nm.value
+                var two=ae.value
+                var fro= st.value
+                var five=el.value
+                for(i=0;i<run.length;i++)
+                {
+                if (run[i].checked)
+                    {
+                        var three= run[i].value
+                    }
+                }
+                var rowCount = table.rows.length;
+                var row = table.insertRow(rowCount);
+                row.insertCell(0).innerHTML= one;
+                row.insertCell(1).innerHTML= two;
+                row.insertCell(2).innerHTML=three;
+                row.insertCell(3).innerHTML=fro;
+                row.insertCell(4).innerHTML=five;
+                row.insertCell(5).innerHTML="<button style='background-color: red;'onclick='del(event)'>DELETE</button>";
+            }
+            function del(event)
+            {
+                var td = event.target.parentNode; 
+                var tr = td.parentNode; // the row to be removed
+               tr.parentNode.removeChild(tr);   
+            }
+        </script>
+    </body>
+</html>
